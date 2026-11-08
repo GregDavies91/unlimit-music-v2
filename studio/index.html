@@ -45,22 +45,17 @@
         <input id="password-input" type="password" placeholder="Leave blank for open room" />
         <label for="name-input">Your Name</label>
         <input id="name-input" type="text" placeholder="Anonymous" value="Player" />
-        <button id="join-btn">Connect</button>
+        <button id="join-btn">Loading…</button>
         <a href="https://unlimitmusic.com" class="back-link">← Back to UnlimitMusic.com</a>
       </div>
     </div>
     
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(function() {
-    var room = document.getElementById('room-input');
-    var name = document.getElementById('name-input');
-    var btn = document.getElementById('join-btn');
-    if (room) room.value = 'world';
-    if (name) name.value = 'Player' + Math.floor(Math.random()*10000);
-    if (btn) btn.click();
-  }, 500);
-});
+(function(){
+  var btn=document.getElementById('join-btn');
+  if(!btn) return;
+  fetch('https://simplisticscientistsmetaverse.onrender.com').then(function(){btn.textContent='Connect';}).catch(function(){btn.textContent='Retry';});
+})();
 </script>
 </body>
 </html>
